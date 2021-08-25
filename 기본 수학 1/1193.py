@@ -1,21 +1,19 @@
 # 1193번 : 분수찾기
-x = int(input())
-num_list = []
+num = int(input())  # 몇 번째 분수를 구할 것인지 입력
 
-num = 0
-num_count = 0
+line = 0
+max_num = 0
 
-while num_count < x:
-    num += 1
-    num_count += num
+while num > max_num:
+    line += 1
+    max_num += line
 
-num_count -= num
+gap = max_num - num
 
-if num % 2 == 0:
-    i = x - num_count
-    j = num - i + 1
-else:
-    i = num - (x - num_count) + 1
-    j = x - num_count
-
-print(f"{i}/{j}")
+if line % 2 == 0:  # line이 짝수일 경우
+    top = line - gap
+    under = gap + 1
+else:  # line이 홀수일 경우
+    top = gap + 1
+    under = line - gap
+print(top, '/', under)
